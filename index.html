@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <p class="header">Word</p>
+            <div class="buttons">
+                <button class="buttons_item" id="weight"><b>Ж</b></button>
+                <button class="buttons_item" id="link">Ссылка</button>
+                <button class="buttons_item" id="italics"><i>К</i></button>
+                <button class="buttons_item" id="underline"><span>Ч</span></button>
+            </div>
+            <textarea name="word" id="textarea" cols="70" rows="15"></textarea>
+        </div>
+    </div>
+    <div class="output">
+        <div class="output_word">
+            <textarea readonly id='out' rows="1"></textarea>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
