@@ -89,13 +89,28 @@ body {
 
 #out {
   width: 300px;
+  height: auto;
   border: none;
   outline: none;
   background-color: #6E4D86;
   border-radius: 20px;
-  padding: 10px;
+  padding: 20px;
   color: #222;
-  cursor: default;
+  cursor: text;
   resize: vertical;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#in {
+  max-width: 290px;
+  word-break: break-all;
+}
+
+.underline {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=style.css.map */

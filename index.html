@@ -17,12 +17,12 @@
                 <button class="buttons_item" id="italics"><i>К</i></button>
                 <button class="buttons_item" id="underline"><span>Ч</span></button>
             </div>
-            <textarea name="word" id="textarea" cols="70" rows="15"></textarea>
+            <textarea contenteditable='true' name="word" id="textarea" cols="70" rows="15"></textarea>
         </div>
     </div>
     <div class="output">
-        <div class="output_word">
-            <textarea readonly id='out' rows="1"></textarea>
+        <div class="output_word" id='out'>
+            <span id='in'></span>
         </div>
     </div>
     <script src="script.js"></script>
