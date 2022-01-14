@@ -31,6 +31,28 @@ body{
 .buttons{
     padding-top: 40px;
     user-select: none;
+    position: relative;
+    &_redaction{
+        position: absolute;
+        bottom: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: .3s ease all;
+        &.active{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    &_main{
+        display: flex;
+        justify-content: center;
+        width: 360px;
+        transition: .3s ease all;
+        &.hidden{
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
     &_item{
         border: none;
         outline: none;
@@ -59,39 +81,39 @@ body{
     border: 2px solid #583E6B;
     border-radius: 8px;
     background-color: #CCBBD8;
+    transition: .3s ease all;
+}
+.tehidden{
+    opacity: 0;
+    visibility: hidden;
 }
 .output{
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    // &_word{
-    //     background-color: #372743;
-    //     border-top-right-radius: 50%;
-    //     border-bottom-right-radius: 50%;
-    //     border-top-left-radius: 50%;
-    //     border-bottom-left-radius: 50%;
-    //     position: relative;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    // }
+    position: relative;
+    &_word{
+        position: absolute;
+        top: 40px;
+        width: 100%;
+        height: auto;
+        background-color: #6E4D86;
+        border-radius: 20px;
+        padding: 10px;
+        color: #222;
+        cursor: text;
+        resize: vertical;
+        display: flex;
+        flex-wrap: wrap;
+        transition: .3s ease all;
+        opacity: 0;
+        visibility: hidden;
+        &.active{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
 }
-#out{
-    width: 300px;
-    height: auto;
-    border: none;
-    outline: none;
-    background-color: #6E4D86;
-    border-radius: 20px;
-    padding: 20px;
-    color: #222;
-    cursor: text;
-    resize: vertical;
-    display: flex;
-    flex-wrap: wrap;
-}
+
 #in{
-    max-width: 290px;
+    max-width: 100%;
     word-break: break-all;
 }
 .underline{

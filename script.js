@@ -2,7 +2,9 @@ const btn = {
     weight : document.querySelector('#weight'),
     italics : document.querySelector('#italics'),
     underline : document.querySelector('#underline'),
-    link : document.querySelector('#link')
+    link : document.querySelector('#link'),
+    redact : document.querySelector('#redact')
+    
 }
 let text = {
     entr : document.querySelector('#textarea'),
@@ -26,7 +28,8 @@ const tags = {
         symbolindex,
         symbolLenght,
         insert,
-        total;
+        total,
+        o;
         
 
     text.entr.addEventListener('keyup',function(e){
@@ -44,7 +47,7 @@ const tags = {
         symbolLenght = remake[0].length;
 
         insert = symbolindex + symbolLenght + 1;
-        total = [...text.out.innerText];
+        total = [...text.out.textContent];
 
         // console.log(symbolLenght, symbolindex, insert,total);
         
@@ -57,7 +60,8 @@ const tags = {
         
         total.splice(symbolindex,0,tags.istart);
         total.splice(insert,0,tags.iend);
-        let o = total.join('');
+         o = total.join('');
+        
         text.out.innerHTML = o;
         
        
@@ -66,7 +70,8 @@ const tags = {
         
         total.splice(symbolindex,0,tags.bstart);
         total.splice(insert,0,tags.bend);
-        let o = total.join('');
+         o = total.join('');
+        
         text.out.innerHTML = o;
        
     }
@@ -75,7 +80,8 @@ const tags = {
         
         total.splice(symbolindex,0,tags.astart);
         total.splice(insert,0,tags.aend);
-        let o = total.join('');
+         o = total.join('');
+        
         text.out.innerHTML = o;
        
     }
@@ -84,7 +90,8 @@ const tags = {
         
         total.splice(symbolindex,0,tags.ustart);
         total.splice(insert,0,tags.uend);
-        let o = total.join('');
+         o = total.join('');
+        
         text.out.innerHTML = o;
        
     }
@@ -100,4 +107,11 @@ const tags = {
     });
     btn.underline.addEventListener('click',function(){
         under();
+    });
+
+    btn.redact.addEventListener('click',function(){
+        document.querySelector('.buttons_main').classList.add('hidden');
+        document.querySelector('.buttons_redaction').classList.add('active');
+        text.entr.classList.add('tehidden');
+        text.oiu.classList.add('active')
     });

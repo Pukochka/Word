@@ -45,6 +45,38 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  position: relative;
+}
+
+.buttons_redaction {
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+}
+
+.buttons_redaction.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.buttons_main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 360px;
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+}
+
+.buttons_main.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .buttons_item {
@@ -79,22 +111,27 @@ body {
   border: 2px solid #583E6B;
   border-radius: 8px;
   background-color: #CCBBD8;
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+}
+
+.tehidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .output {
-  position: absolute;
-  top: 50px;
-  left: 50px;
+  position: relative;
 }
 
-#out {
-  width: 300px;
+.output_word {
+  position: absolute;
+  top: 40px;
+  width: 100%;
   height: auto;
-  border: none;
-  outline: none;
   background-color: #6E4D86;
   border-radius: 20px;
-  padding: 20px;
+  padding: 10px;
   color: #222;
   cursor: text;
   resize: vertical;
@@ -103,10 +140,19 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.output_word.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 #in {
-  max-width: 290px;
+  max-width: 100%;
   word-break: break-all;
 }
 

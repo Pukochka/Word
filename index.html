@@ -12,17 +12,23 @@
         <div class="container">
             <p class="header">Word</p>
             <div class="buttons">
-                <button class="buttons_item" id="weight"><b>Ж</b></button>
-                <button class="buttons_item" id="link">Ссылка</button>
-                <button class="buttons_item" id="italics"><i>К</i></button>
-                <button class="buttons_item" id="underline"><span>Ч</span></button>
+                <div class="buttons_main">
+                    <button class="buttons_item" id="redact">Редактировать текст</button>
+                </div>
+                <div class="buttons_redaction">
+                    <button class="buttons_item" id="weight"><b>Ж</b></button>
+                    <button class="buttons_item" id="link">Ссылка</button>
+                    <button class="buttons_item" id="italics"><i>К</i></button>
+                    <button class="buttons_item" id="underline"><span>Ч</span></button>
+                </div>
             </div>
-            <textarea contenteditable='true' name="word" id="textarea" cols="70" rows="15"></textarea>
-        </div>
-    </div>
-    <div class="output">
-        <div class="output_word" id='out'>
-            <span id='in'></span>
+            <div class="output">
+                <textarea contenteditable='true' name="word" id="textarea" cols="70" rows="15"></textarea>
+                <div class="output_word" id="out">
+                    <span id="in"></span>
+                </div>
+            </div>
+            
         </div>
     </div>
     <script src="script.js"></script>
