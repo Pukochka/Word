@@ -63,10 +63,10 @@
 
     function edit(start,end){
 
-        total.splice(symbolindex,0,start);
-        total.splice(insert,0,end);
+        total?.splice(symbolindex,0,start);
+        total?.splice(insert,0,end);
 
-        arr = total.join('');
+        arr = total?.join('');
 
         text.out.innerHTML = arr;
     }
