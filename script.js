@@ -109,11 +109,5 @@
 
     text.oiu.addEventListener('mouseup',selectedTx);
 
-    text.oiu.addEventListener('touchend',function(e){
-        e.preventDefault();
-        selectedTx()
-    });
-    text.oiu.addEventListener('touch',function(e){
-        e.preventDefault();
-        selectedTx()
-    });
+    text.oiu.addEventListener('touchend',selectedTx);
+    text.oiu.addEventListener('touch',selectedTx);
