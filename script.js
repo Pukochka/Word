@@ -53,6 +53,23 @@ const tags = {
         
     });
 
+    text.oiu.addEventListener('touchstart',function(e){
+        
+        content = window.getSelection().toString();
+        
+        remake = text.out.innerHTML.match(`${content}`);
+        
+        
+        symbolindex = remake['index'];
+        symbolLenght = remake[0].length;
+
+        insert = symbolindex + symbolLenght + 1;
+        total = [...text.out.innerHTML];
+
+        console.log(symbolLenght, symbolindex, insert,total);
+        
+    });
+
     function edit(start,end){
 
         total.splice(symbolindex,0,start);
