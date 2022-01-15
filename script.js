@@ -47,7 +47,7 @@
         text.out.innerHTML
     }
 
-    function selectedTx(){
+    function selectedTx(e){
         content = window.getSelection().toString();
         
         remake = text.out.innerHTML.match(`${content}`);
@@ -58,7 +58,7 @@
         insert = symbolindex + symbolLenght + 1;
         total = [...text.out.innerHTML];
 
-        console.log(symbolLenght, symbolindex, insert,total);
+        console.log(e);
     }
 
     function edit(start,end){
@@ -109,4 +109,7 @@
 
     text.oiu.addEventListener('mouseup',selectedTx);
 
-    text.oiu.addEventListener('touchend',selectedTx);
+    text.oiu.addEventListener('touchend',function(e){
+        e.preventDefault();
+        selectedTx()
+    });
