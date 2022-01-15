@@ -3,8 +3,8 @@ const btn = {
     italics : document.querySelector('#italics'),
     underline : document.querySelector('#underline'),
     link : document.querySelector('#link'),
-    redact : document.querySelector('#redact')
-    
+    redact : document.querySelector('#redact'),
+    unred : document.querySelector('#addRed')
 }
 let text = {
     entr : document.querySelector('#textarea'),
@@ -36,20 +36,20 @@ const tags = {
         text.out.innerHTML = text.entr.value;
     });
     
-    text.entr.addEventListener('select',function(e){
-
-        content = document.getSelection().toString();
+    text.oiu.addEventListener('mouseup',function(e){
+        console.log(e)
+        content = window.getSelection().toString();
         
-        remake = text.entr.value.match(`${content}`);
+        remake = text.out.innerHTML.match(`${content}`);
         
         
         symbolindex = remake['index'];
         symbolLenght = remake[0].length;
 
         insert = symbolindex + symbolLenght + 1;
-        total = [...text.out.textContent];
+        total = [...text.out.innerHTML];
 
-        // console.log(symbolLenght, symbolindex, insert,total);
+        console.log(symbolLenght, symbolindex, insert,total);
         
     });
 
@@ -91,23 +91,14 @@ const tags = {
         total.splice(symbolindex,0,tags.ustart);
         total.splice(insert,0,tags.uend);
          o = total.join('');
-        
         text.out.innerHTML = o;
        
     }
 
-    btn.italics.addEventListener('click',function(){
-        ital();
-    });
-    btn.weight.addEventListener('click',function(){
-        weit();
-    });
-    btn.link.addEventListener('click',function(){
-        lin();
-    });
-    btn.underline.addEventListener('click',function(){
-        under();
-    });
+    btn.italics.addEventListener('click',ital);
+    btn.weight.addEventListener('click',weit);
+    btn.link.addEventListener('click',lin);
+    btn.underline.addEventListener('click',under);
 
     btn.redact.addEventListener('click',function(){
         document.querySelector('.buttons_main').classList.add('hidden');
@@ -115,3 +106,12 @@ const tags = {
         text.entr.classList.add('tehidden');
         text.oiu.classList.add('active')
     });
+
+    btn.unred.addEventListener('click',function(){
+        document.querySelector('.buttons_main').classList.remove('hidden');
+        document.querySelector('.buttons_redaction').classList.remove('active');
+        text.entr.classList.remove('tehidden');
+        text.oiu.classList.remove('active')
+    });
+
+    

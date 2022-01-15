@@ -32,6 +32,9 @@ body{
     padding-top: 40px;
     user-select: none;
     position: relative;
+    width: 600px;
+    display: flex;
+    justify-content: center;
     &_redaction{
         position: absolute;
         bottom: 0;
@@ -46,7 +49,7 @@ body{
     &_main{
         display: flex;
         justify-content: center;
-        width: 360px;
+        
         transition: .3s ease all;
         &.hidden{
             opacity: 0;
@@ -69,7 +72,7 @@ body{
         }
         &:hover{
             background-color: #6E4D86;
-            color: #fff;
+            color: rgb(207, 205, 205);
         }
     }
 }
@@ -94,7 +97,8 @@ body{
         top: 40px;
         width: 100%;
         height: auto;
-        background-color: #6E4D86;
+        background-color: #CCBBD8;
+        border: 2px solid #583E6B;
         border-radius: 20px;
         padding: 10px;
         color: #222;
@@ -105,6 +109,7 @@ body{
         transition: .3s ease all;
         opacity: 0;
         visibility: hidden;
+        font-size: 14px;
         &.active{
             opacity: 1;
             visibility: visible;

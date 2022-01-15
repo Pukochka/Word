@@ -46,6 +46,13 @@ body {
       -ms-user-select: none;
           user-select: none;
   position: relative;
+  width: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .buttons_redaction {
@@ -69,7 +76,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 360px;
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
 }
@@ -100,7 +106,7 @@ body {
 
 .buttons_item:hover {
   background-color: #6E4D86;
-  color: #fff;
+  color: #cfcdcd;
 }
 
 #textarea {
@@ -129,7 +135,8 @@ body {
   top: 40px;
   width: 100%;
   height: auto;
-  background-color: #6E4D86;
+  background-color: #CCBBD8;
+  border: 2px solid #583E6B;
   border-radius: 20px;
   padding: 10px;
   color: #222;
@@ -144,6 +151,7 @@ body {
   transition: .3s ease all;
   opacity: 0;
   visibility: hidden;
+  font-size: 14px;
 }
 
 .output_word.active {
