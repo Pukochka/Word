@@ -37,7 +37,7 @@ const tags = {
     });
     
     text.oiu.addEventListener('mouseup',function(e){
-        console.log(e)
+        
         content = window.getSelection().toString();
         
         remake = text.out.innerHTML.match(`${content}`);
@@ -53,52 +53,15 @@ const tags = {
         
     });
 
-    
+    function edit(start,end){
 
+        total.splice(symbolindex,0,start);
+        total.splice(insert,0,end);
 
-    function ital(){
-        
-        total.splice(symbolindex,0,tags.istart);
-        total.splice(insert,0,tags.iend);
-         o = total.join('');
-        
+        o = total.join('');
+
         text.out.innerHTML = o;
-        
-       
     }
-    function weit(){
-        
-        total.splice(symbolindex,0,tags.bstart);
-        total.splice(insert,0,tags.bend);
-         o = total.join('');
-        
-        text.out.innerHTML = o;
-       
-    }
-
-    function lin(){
-        
-        total.splice(symbolindex,0,tags.astart);
-        total.splice(insert,0,tags.aend);
-         o = total.join('');
-        
-        text.out.innerHTML = o;
-       
-    }
-
-    function under(){
-        
-        total.splice(symbolindex,0,tags.ustart);
-        total.splice(insert,0,tags.uend);
-         o = total.join('');
-        text.out.innerHTML = o;
-       
-    }
-
-    btn.italics.addEventListener('click',ital);
-    btn.weight.addEventListener('click',weit);
-    btn.link.addEventListener('click',lin);
-    btn.underline.addEventListener('click',under);
 
     btn.redact.addEventListener('click',function(){
         document.querySelector('.buttons_main').classList.add('hidden');
@@ -114,4 +77,15 @@ const tags = {
         text.oiu.classList.remove('active')
     });
 
-    
+    btn.italics.addEventListener('click',function(){
+        edit(tags.istart,tags.iend)
+    });
+    btn.weight.addEventListener('click',function(){
+        edit(tags.bstart,tags.bend)
+    });
+    btn.link.addEventListener('click',function(){
+        edit(tags.astart,tags.aend)
+    });
+    btn.underline.addEventListener('click',function(){
+        edit(tags.ustart,tags.uend)
+    });
