@@ -113,3 +113,7 @@
         e.preventDefault();
         selectedTx()
     });
+    text.oiu.addEventListener('touch',function(e){
+        e.preventDefault();
+        selectedTx()
+    });
