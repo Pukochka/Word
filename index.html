@@ -10,26 +10,24 @@
 <body>
     <div class="wrapper">
         <div class="container">
-            <p class="header">Word</p>
-            <div class="buttons">
-                <div class="buttons_main">
-                    <button class="buttons_item" id="redact">Редактировать текст</button>
+            <div class="group">
+                <div class="group_item bold" id="bold">
+                    
                 </div>
-                <div class="buttons_redaction">
-                    <button class="buttons_item" id="weight"><b>Ж</b></button>
-                    <button class="buttons_item" id="link">Ссылка</button>
-                    <button class="buttons_item" id="italics"><i>К</i></button>
-                    <button class="buttons_item" id="underline"><span>Ч</span></button>
-                    <button class="buttons_item" id="addRed">Редактировать</button>
+                <div class="group_item italic" id="italic">
+                    
                 </div>
+                <div class="group_item link" id="link">
+                    
+                </div>
+                <div class="group_item code" id="code"></div>
+                <div class="group_item line" id="line">u</div>
+                <div class="group_item" id="sp">sp</div>
             </div>
-            <div class="output">
-                <textarea contenteditable='true' name="word" id="textarea" placeholder="Напиши что-нибудь"></textarea>
-                <div class="output_word" id="out">
-                    <span id="in"></span>
-                </div>
+            <div class="editor">
+                <textarea style="display: none;" id="textarea"></textarea>
+                <div contenteditable="true" class="editor_input" id="editor"></div>
             </div>
-            
         </div>
     </div>
     <script src="script.js"></script>
