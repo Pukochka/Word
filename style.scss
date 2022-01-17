@@ -9,6 +9,10 @@ body{
     background: linear-gradient(90deg, hsla(352, 83%, 64%, 1) 0%, hsla(230, 90%, 68%, 1) 100%);
     overflow-x: hidden;
 }
+svg{
+    width: 22px;
+    height: 22px;
+}
 .wrapper{
     max-width: 1200px;
     margin: 0 auto;
@@ -17,138 +21,76 @@ body{
 }
 .container{
     width: 100%;
-    display: grid;
-    place-items: center;
-    position: relative;
-}
-.header{
-    padding-top: 40px;
-    color: #372743;
-    font-size: 78px;
-    font-weight: 600;
-    user-select: none;
-}
-.buttons{
-    padding-top: 40px;
-    user-select: none;
-    position: relative;
-    max-width: 600px;
+    height: 100vh;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    transition: .3s ease all;
-    &_redaction{
-        opacity: 0;
-        visibility: hidden;
-        transition: .3s ease all;
-        display: flex;
-        flex-wrap: wrap;
-        column-gap: 20px;
-        row-gap: 20px;
-        &.active{
-            opacity: 1;
-            visibility: visible;
-        }
-    }
-    &_main{
+    align-items: center;
+}
+.group{
+    display: flex;
+    max-width: 400px;
+    margin: 0 auto;
+    user-select: none;
+    &_item{
+        width: 25px;
+        height: 25px;
+        background-color: rgb(212, 212, 212);
         display: flex;
         justify-content: center;
-        
-        transition: .3s ease all;
-        &.hidden{
-            opacity: 0;
-            visibility: hidden;
-        }
-    }
-    &_item{
-        border: none;
-        outline: none;
-        padding: 5px 20px;
-        font-size: 20px;
-        background-color: #BDA8CD;
-        color: #444;
-        border-radius: 8px;
+        align-items: center;
+        border-radius: 2px;
+        border: solid 3px rgb(212, 212, 212);
+        font-weight: 500;
         cursor: pointer;
         transition: .3s ease all;
-        box-shadow:0 0 12px #6E4D86;
         &:hover{
-            background-color: #6E4D86;
-            color: rgb(207, 205, 205);
+            background-color: #fff;
+            border: solid 3px #fff;
+        }
+        & + &{
+            margin-left: 3px;
         }
     }
 }
-#textarea{
-    width: 100%;
-    height: 300px;
-    margin-top: 40px;
-    resize: vertical;
-    outline: none;
-    padding: 7px;
-    border: 2px solid #583E6B;
-    border-radius: 8px;
-    background-color: #CCBBD8;
-    transition: .3s ease all;
+.group_item.active{
+    background-color: #fff;
+    border: solid 3px #fff;
 }
-.tehidden{
-    opacity: 0;
-    visibility: hidden;
-}
-.wrap{
-    max-width: 600px;
-    margin: 0 auto;
-}
-.output{
-    position: relative;
-    width: 50%;
-    &_word{
-        position: absolute;
-        top: 40px;
-        width: 100%;
-        height: auto;
-        background-color: #CCBBD8;
-        border: 2px solid #583E6B;
-        border-radius: 20px;
-        padding: 40px;
-        color: #222;
-        cursor: text;
-        resize: vertical;
-        display: flex;
-        flex-wrap: wrap;
-        transition: .3s ease all;
-        opacity: 0;
-        visibility: hidden;
-        font-size: 14px;
-        &.active{
-            opacity: 1;
-            visibility: visible;
-        }
+.editor{
+    width: 600px;
+    margin-top: 10px;
+    &_input{
+        outline: none;
+        background-color: rgb(231, 231, 231);
+        border:solid 2px rgb(66, 65, 65);
+        padding: 10px;
+        border-radius: 6px;
+        min-height: 300px;
+        word-wrap: break-word;
     }
 }
-
-#in{
-    max-width: 100%;
-    word-break: break-all;
+.bold{
+    background-image: url(./img/bold.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-.underline{
-    text-decoration: underline;
+.italic{
+    background-image: url(./img/italic.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-@media (max-width:750px) {
-    .output{
-        width: 60%;
-    }
+.link{
+    background-image: url(./img/link.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-@media (max-width:600px) {
-    .output{
-        width: 70%;
-    }
+.code{
+    background-image: url(./img/code.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-@media (max-width:500px) {
-    .output{
-        width: 80%;
-    }
-}
-@media (max-width:400px) {
-    .output{
-        width: 90%;
-    }
+.line{
+    text-decoration: line-through;
+    font-weight: 500;
 }
