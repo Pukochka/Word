@@ -11,6 +11,7 @@
     function designMode(){
         rich.document.designMode = 'On';
         rich.document.body.style.wordWrap = 'break-word';
+        rich.document.body.style.fontFamily = 'sans-serif';
         rich.document.body.setAttribute('spellcheck','false');
         rich.document.body.setAttribute('contenteditable','true');
     }
@@ -60,13 +61,16 @@
             let outH = rich.document.body.innerHTML;
             document.querySelector('.codearea').textContent =`<p>${outH}</p>`;
 
+            document.addEventListener('keydown',function(){
+                rich.document.body.innerHTML = document.querySelector('.codearea').value;
+            })
             visibleCode();
         });
 
         buttons.sp.addEventListener('click',function(){
             let i = 0 ;
             let content = select.getRangeAt(i).toString();
-            console.log(content)
+            
             rich.document.execCommand('insertHTML',false,`<span class="tg-spoiler">${content}</span>`)
         });
         

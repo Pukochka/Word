@@ -29,8 +29,7 @@ svg{
 }
 .group{
     display: flex;
-    max-width: 400px;
-    margin: 0 auto;
+    margin-bottom: 5px;
     user-select: none;
     &_item{
         width: 25px;
@@ -53,7 +52,7 @@ svg{
             border: solid 3px #fff;
         }
         & + &{
-            margin-left: 3px;
+            margin-left: 4px;
         }
     }
 }
@@ -102,7 +101,6 @@ svg{
 .editor{
     width: 50%;
     margin: 0 auto;
-    margin-top: 10px;
     position: relative;
     &_input{
         width: 100%;
@@ -135,9 +133,6 @@ svg{
 .code{
     background-image: url(./img/code.svg);
 }
-.code{
-    background-image: url(./img/code.svg);
-}
 .undo{
     background-image: url(./img/undo.svg);
 }
@@ -147,4 +142,29 @@ svg{
 .line{
     text-decoration: line-through;
     font-weight: 500;
+}
+@media (max-width:850px) {
+    .editor{
+        width: 60%;
+    }
+}
+@media (max-width:750px) {
+    .editor{
+        width: 65%;
+    }
+}
+@media (max-width:650px) {
+    .editor{
+        width: 70%;
+    }
+}
+@media (max-width:550px) {
+    .editor{
+        width: 75%;
+    }
+}
+@media (max-width:450px) {
+    .editor{
+        width: 80%;
+    }
 }
