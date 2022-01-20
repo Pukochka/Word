@@ -7,26 +7,30 @@
     <title>Word</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="designMode();">
     <div class="wrapper">
         <div class="container">
             <div class="group">
-                <div class="group_item bold" id="bold">
-                    
-                </div>
-                <div class="group_item italic" id="italic">
-                    
-                </div>
-                <div class="group_item link" id="link">
-                    
-                </div>
-                <div class="group_item code" id="code"></div>
-                <div class="group_item line" id="line">u</div>
-                <div class="group_item" id="sp">sp</div>
+                <a  href="javascript:;" title="Bold" data-style="bold" class="group_item bold simpleButtons" id="bold"></a>
+
+                <a href="javascript:;" title="Italic" data-style="italic" class="group_item italic simpleButtons" id="italic"></a>
+
+                <a href="javascript:;" title="Add link" class="group_item link" id="link"></a>
+
+                <a href="javascript:;" title="View code" class="group_item code" id="code"></a>
+
+                <a href="javascript:;" title="Line-thourow" data-style="strikeThrough" class="group_item line simpleButtons" id="line">u</a>
+
+                <a href="javascript:;" title="Class tg-spoiler" class="group_item" id="sp">sp</a>
+
+                <a href="javascript:;" title="Undo" data-style="undo" class="group_item undo simpleButtons" id="undo"></a>
+
+                <a href="javascript:;" title="Remove format" data-style="removeFormat" class="group_item delete simpleButtons" id="delete"></a>
             </div>
             <div class="editor">
-                <textarea style="display: none;" id="textarea"></textarea>
-                <div contenteditable="true" class="editor_input" id="editor"></div>
+                <textarea name="codeArea" class="codearea" style="width:100%; height:100%;"></textarea>
+                <input class="createlink" type="text" value="https://" style="width:100%; height:10%;">
+                <iframe name="rich" class="editor_input"></iframe>
             </div>
         </div>
     </div>
