@@ -72,8 +72,12 @@ svg {
   border: solid 3px #d4d4d4;
   font-weight: 500;
   cursor: pointer;
-  -webkit-transition: .3s ease all;
-  transition: .3s ease all;
+  -webkit-transition: .3s;
+  transition: .3s;
+  text-decoration: none;
+  color: #333;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .group_item:hover {
@@ -90,12 +94,61 @@ svg {
   border: solid 3px #fff;
 }
 
+.codearea {
+  position: absolute;
+  outline: none;
+  background-color: #000;
+  color: #aaa;
+  border-radius: 6px;
+  padding: 10px;
+  border: solid 2px #fff;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: .3s ease opacity;
+  transition: .3s ease opacity;
+}
+
+.codearea.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.createlink {
+  position: absolute;
+  outline: none;
+  background-color: #444;
+  color: #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  border: solid 2px #222;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: .3s ease opacity;
+  transition: .3s ease opacity;
+}
+
+.createlink::before {
+  content: 'Create';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.createlink.active {
+  visibility: visible;
+  opacity: 1;
+}
+
 .editor {
-  width: 600px;
+  width: 50%;
+  margin: 0 auto;
   margin-top: 10px;
+  position: relative;
 }
 
 .editor_input {
+  width: 100%;
+  overflow-x: hidden;
   outline: none;
   background-color: #e7e7e7;
   border: solid 2px #424141;
@@ -103,30 +156,43 @@ svg {
   border-radius: 6px;
   min-height: 300px;
   word-wrap: break-word;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: .3s ease opacity;
+  transition: .3s ease opacity;
+}
+
+.editor_input.hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .bold {
   background-image: url(./img/bold.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .italic {
   background-image: url(./img/italic.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .link {
   background-image: url(./img/link.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .code {
   background-image: url(./img/code.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
+}
+
+.code {
+  background-image: url(./img/code.svg);
+}
+
+.undo {
+  background-image: url(./img/undo.svg);
+}
+
+.delete {
+  background-image: url(./img/delete.svg);
 }
 
 .line {

@@ -1,66 +1,72 @@
-    const btn = {
-        bold : document.querySelector('#bold'),
-        italic : document.querySelector('#italic'),
-        line : document.querySelector('#line'),
+    const simpleButtons = document.querySelectorAll('.simpleButtons');
+
+    const buttons = {
         link : document.querySelector('#link'),
-        code : document.querySelector('#code'),
-        sp : document.querySelector('#sp')
-    }
-    let text = {
-        outCode : document.querySelector('#textarea'),
-        editor : document.querySelector('#editor')
-    }
-    const tags = {
-        istart : '<i>',
-        iend : '</i>',
-        bstart : '<b>',
-        bend : '</b>',
-        astart : '<a href="#">',
-        aend : '</a>',
-        lstart : '<span class="line">',
-        lend : '</span>',
+        sp : document.querySelector('#sp'),
+        code : document.querySelector('#code')
     }
 
-    let content,
-        selection,
-        start,
-        end;
-
-        let i =0;
+    let select;
     
-    
-    document.onselectionchange = function() {
-        selection = document.getSelection();
-        
-        
-        
-    };
-    function setStyle(start,end){
-        if(text.editor.innerHTML == '' ){return}
-        let { startOffset , endOffset} = selection.getRangeAt(i);
-        console.log(startOffset,endOffset)
-        let inner = [...text.editor.innerHTML];
-        inner.splice(startOffset,0,start);
-        inner.splice(endOffset + 1  ,0,end);
-        
-        let total = inner.join('');
-        
-        text.editor.innerHTML = total;
-        selection.removeAllRanges()
+    function designMode(){
+        rich.document.designMode = 'On';
+        rich.document.body.style.wordWrap = 'break-word';
+        rich.document.body.setAttribute('spellcheck','false');
+        rich.document.body.setAttribute('contenteditable','true');
     }
-    
-    btn.bold.addEventListener('click',function(){
-        setStyle(tags.bstart,tags.bend)
-    }) ;
-    btn.link.addEventListener('click',function(){
-        setStyle(tags.astart,tags.aend)
-    }) ;
-//     btn.sp.addEventListener('click',function(){
-//         setStyle(tags.bstart,tags.bend)
-//    }) ;
-    btn.line.addEventListener('click',function(){
-        setStyle(tags.lstart,tags.lend)
-    }) ;
-    btn.italic.addEventListener('click',function(){
-        setStyle(tags.istart,tags.iend)
-    }) ;
+
+    function setStyle(style){
+        rich.document.execCommand(style);
+    }
+
+        rich.document.onselectionchange = function(){
+            select = rich.document.getSelection();
+        }
+
+        for(let btn of simpleButtons){
+            btn.addEventListener('click',function(){
+                let data = btn.getAttribute('data-style');
+                setStyle(data);
+            });
+        }
+
+        const createLinkActive = () => {
+            document.querySelector('.createlink').classList.add('active');
+            document.querySelector('.editor_input').classList.add('hidden')
+        };
+
+        const createLinkHidden = () => {
+            document.querySelector('.createlink').classList.remove('active');
+            document.querySelector('.editor_input').classList.remove('hidden');
+        };
+
+        const visibleCode = () => document.querySelector('.codearea').classList.toggle('active')
+
+        buttons.link.addEventListener('click',function(e){
+            createLinkActive();
+            document.addEventListener('keydown',(e)=>{
+                switch(e.keyCode) {
+                    case 13 :
+                        let joinLink = document.querySelector('.createlink').value;
+                        rich.document.execCommand('createLink',false,joinLink);
+                        createLinkHidden();
+                        break;
+                }
+            });
+        });
+
+        buttons.code.addEventListener('click',function(e){
+
+            let outH = rich.document.body.innerHTML;
+            document.querySelector('.codearea').textContent =`<p>${outH}</p>`;
+
+            visibleCode();
+        });
+
+        buttons.sp.addEventListener('click',function(){
+            let i = 0 ;
+            let content = select.getRangeAt(i).toString();
+            console.log(content)
+            rich.document.execCommand('insertHTML',false,`<span class="tg-spoiler">${content}</span>`)
+        });
+        
