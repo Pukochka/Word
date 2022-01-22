@@ -1,4 +1,5 @@
-    const simpleButtons = document.querySelectorAll('.simpleButtons');
+    const simpleButtons = document.querySelectorAll('.simpleButtons'),
+          cl = document.querySelectorAll('.cl');  
 
     const buttons = {
         link : document.querySelector('#link'),
@@ -9,41 +10,42 @@
     }
 
     let select,
-        outH,
-        editor = rich.document,
-        inner;
+        editor = rich.document;
     
     function designMode(){
         editor.designMode = 'On';
-        editor.body.style.wordWrap = 'break-word';
-        // editor.body.style.fontFamily = 'sans-serif';
         editor.body.setAttribute('spellcheck','false');
-        editor.body.setAttribute('contenteditable','true');
-        editor.execCommand('defaultParagraphSeparator', false, "p");
+        // editor.execCommand('defaultParagraphSeparator', false, "p");
     }
 
     function setStyle(style){
         editor.execCommand(style);
     }
 
-    function editP(){
-        let i = 0;
-        editor.body.addEventListener('focus',function(){
-            if(i > 0){return}
+    // function editP(){
+    //     let i = 0;
+    //     editor.body.addEventListener('focus',function(){
+    //         if(i > 0){return}
 
-                let pi = document.createElement('p');
-                pi.innerHTML = '&nbsp;';
-                this.append(pi);
+    //             let pi = document.createElement('p');
+    //             pi.innerHTML = '&nbsp;';
+    //             this.append(pi);
 
-                i++;
-        });
-    }
+    //             i++;
+    //     });
+    // }
     
-    editP();
-        
+    // editP();
+    
+    rich.document.addEventListener('keydown',function(e){
+        if(e.keyCode == 13){
+            // editor.execCommand('insertHTML', false, '\n');
+            editor.execCommand('insertLineBreak', false, null);
+            e.preventDefault();
+        }
+    });
         editor.onselectionchange = function(){
             select = editor.getSelection();
-            console.log(select)
         }
 
             for(let btn of simpleButtons){
@@ -66,23 +68,24 @@
         const visibleCode = () => document.querySelector('.codearea').classList.toggle('active');
 
         let codeValue = () => {
-            outH = editor.body.innerHTML;
-            let n = outH.replace(/&nbsp;/gi, '');
+            let outH = editor.body.innerHTML;
+            let slesh = /<br>/gi;
+            let n = outH.replace(slesh, '<br>\n');
             document.querySelector('.codearea').value = n;
         }
 
         buttons.link.addEventListener('click',function(e){
-            createLinkActive();
-            document.addEventListener('keydown',(e)=>{
-                switch(e.keyCode) {
-                    case 13 :
-                        let joinLink = document.querySelector('.createlink').value;
-                        editor.execCommand('createLink',false,joinLink);
-
-                        createLinkHidden();
-                        break;
-                }
-            });
+                createLinkActive();
+                document.querySelector('.createlink').addEventListener('keydown',(e)=>{
+                    switch(e.keyCode) {
+                        case 13 :
+                            let joinLink = document.querySelector('.createlink').value;
+                            editor.execCommand('createLink',true,`${joinLink}`);
+    
+                            createLinkHidden();
+                            break;
+                    }
+                });
         });
 
         buttons.code.addEventListener('click',function(){
@@ -95,12 +98,17 @@
         });
 
         buttons.sp.addEventListener('click',function(){
-            let i = 0, content = select.getRangeAt(i).toString();
-            
-            editor.execCommand('insertHTML',false,`<span class="tg-spoiler">${content}</span>`)
+            let i = 0, content = select.getRangeAt(0);
+            editor.execCommand('insertHTML',false,`<font class="tg-spoiler">${content}</font>`)
         });
 
         buttons.delete.addEventListener('click',codeValue);
 
         buttons.undo.addEventListener('click',codeValue);
-    
+        
+        editor.body.addEventListener('focus',function(){
+            for(let btn of cl){
+                btn.addEventListener('click',()=>btn.classList.toggle('active'))
+            }
+        });
+        
