@@ -15,7 +15,6 @@
     function designMode(){
         editor.designMode = 'On';
         editor.body.setAttribute('spellcheck','false');
-        // editor.execCommand('defaultParagraphSeparator', false, "p");
     }
 
     function setStyle(style){
@@ -39,7 +38,6 @@
     
     rich.document.addEventListener('keydown',function(e){
         if(e.keyCode == 13){
-            // editor.execCommand('insertHTML', false, '\n');
             editor.execCommand('insertLineBreak', false, null);
             e.preventDefault();
         }
@@ -71,7 +69,8 @@
             let outH = editor.body.innerHTML;
             let slesh = /<br>/gi;
             let n = outH.replace(slesh, '<br>\n');
-            document.querySelector('.codearea').value = n;
+            let e = n.replace(/&nbsp;|&lt;|&gt;|&amp;/gi,'');
+            document.querySelector('.codearea').value = e;
         }
 
         buttons.link.addEventListener('click',function(e){
@@ -98,17 +97,14 @@
         });
 
         buttons.sp.addEventListener('click',function(){
-            let i = 0, content = select.getRangeAt(0);
-            editor.execCommand('insertHTML',false,`<font class="tg-spoiler">${content}</font>`)
+            let content = select.getRangeAt(0);
+            console.log(select)
+            if(content.commonAncestorContainer.data !== ''){
+                editor.execCommand('insertHTML',false,`<span class="tg-spoiler">${content}</span>`)
+            }
         });
 
         buttons.delete.addEventListener('click',codeValue);
 
         buttons.undo.addEventListener('click',codeValue);
-        
-        editor.body.addEventListener('focus',function(){
-            for(let btn of cl){
-                btn.addEventListener('click',()=>btn.classList.toggle('active'))
-            }
-        });
         

@@ -43,6 +43,10 @@ svg {
           align-items: center;
 }
 
+.tg-spoiler {
+  color: red;
+}
+
 .group {
   display: -webkit-box;
   display: -ms-flexbox;
