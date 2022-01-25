@@ -20,21 +20,6 @@
     function setStyle(style){
         editor.execCommand(style);
     }
-
-    // function editP(){
-    //     let i = 0;
-    //     editor.body.addEventListener('focus',function(){
-    //         if(i > 0){return}
-
-    //             let pi = document.createElement('p');
-    //             pi.innerHTML = '&nbsp;';
-    //             this.append(pi);
-
-    //             i++;
-    //     });
-    // }
-    
-    // editP();
     
     rich.document.addEventListener('keydown',function(e){
         if(e.keyCode == 13){
@@ -79,7 +64,7 @@
                     switch(e.keyCode) {
                         case 13 :
                             let joinLink = document.querySelector('.createlink').value;
-                            editor.execCommand('createLink',true,`${joinLink}`);
+                            editor.execCommand('createLink',false,`${joinLink}`);
     
                             createLinkHidden();
                             break;
@@ -88,10 +73,13 @@
         });
 
         buttons.code.addEventListener('click',function(){
-            
-            codeValue();
-        
-            document.addEventListener('keydown',() => {editor.body.innerHTML = document.querySelector('.codearea').value})
+
+            if(document.querySelector('.codearea').classList.contains('active')){
+                editor.body.innerHTML = document.querySelector('.codearea').value;
+                console.log('active')
+            }else{
+                document.querySelector('.codearea').value = editor.body.innerHTML
+            }
             
             visibleCode();
         });
